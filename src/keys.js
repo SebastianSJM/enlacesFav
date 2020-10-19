@@ -1,11 +1,12 @@
+const{db_host,db_user,db_password,db_database} =require("./environmentVars");
 module.exports = {
 
     database: {
-        connectionLimit: 10,
-        host: 'us-cdbr-east-02.cleardb.com',
-        user: 'b3388a370dabc5',
-        password: 'a6afe9cd',
-        database: 'heroku_a6c884cac3769d1'
+        
+        host: db_host,
+        user: db_user,
+        password: db_password,
+        database: db_database
     }
 
 };

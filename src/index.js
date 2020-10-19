@@ -29,7 +29,7 @@ app.set('view engine', '.hbs');
 
 // Middlewares
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(session({
@@ -38,6 +38,7 @@ app.use(session({
   saveUninitialized: false,
   store: new MySQLStore(database)
 }));
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -52,9 +53,10 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use(require('./routes/index'));
-app.use(require('./routes/authentication'));
-app.use('/links', require('./routes/links'));
+app.use(require('./controllers/index'));
+//usuario
+app.use('/usuario/authentication', require('./controllers/usuario/authentication'));
+app.use('/usuario/links', require('./controllers/usuario/links'));
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));
